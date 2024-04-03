@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useTranslation } from "@coral-xyz/i18n";
 import {
   BpInputInner,
@@ -14,6 +14,15 @@ import { _IncognitoAvatarFromUsername } from "../../Unlocked/Settings/AvatarPopo
 export function AccountName({ onNext }: { onNext: (val?: string) => void }) {
   const { t } = useTranslation();
   const [name, setName] = useState("");
+  const [error, setError] = useState("");
+
+  const handleNext = () => {
+    if (name.startsWith("@")) {
+      setError("Account name cannot start with '@'");
+    } else {
+      onNext(name);
+    }
+  };
 
   return (
     <YStack f={1} gap={40} width="100%">
@@ -43,7 +52,7 @@ export function AccountName({ onNext }: { onNext: (val?: string) => void }) {
         <BpPrimaryButton
           disabled={name === ""}
           label={t("next")}
-          onPress={() => onNext(name)}
+          onPress={() => handleNext()}
         />
         <BpLinkButton
           label={t("skip")}
@@ -51,6 +60,9 @@ export function AccountName({ onNext }: { onNext: (val?: string) => void }) {
           onPress={() => onNext()}
         />
       </YStack>
+      {error ? <StyledText color="red" textAlign="center">
+        {error}
+      </StyledText> : null}
     </YStack>
   );
 }
