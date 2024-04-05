@@ -279,6 +279,8 @@ export class ToSecureUITransportSender<
 
     // Focus window to bring it to front.
     // Since port comes from onConnect, tab/window information is available.
+    // FIXME: This is the source of the bug causing TrezorConnect ot fail.
+    // Since the *popup* opens the TrezorConnect popup, there is no way to focus back on the window
     if (this.port.sender?.tab?.windowId) {
       globalThis.chrome?.windows
         .update(this.port.sender?.tab?.windowId, {
@@ -288,6 +290,22 @@ export class ToSecureUITransportSender<
           console.log("[DEBUG] ToSecureUITransportSender: err 6");
           logger.error("window.update", e);
         });
+    } else {
+      // This fixes the bug, but it's not an ideal solution
+      console.log(
+        "[DEBUG] ToSecureUITransportSender: Can't find windowId to focus."
+      );
+      //chrome.windows.update(chrome.windows.WINDOW_ID_CURRENT, { focused: true })
+      chrome.windows.getCurrent().then((window) => {
+        console.log(
+          "[DEBUG] ToSecureUITransportSender: current window",
+          window
+        );
+        openPopupWindow(this.port!.sender!.url!).catch((e) => {
+          console.log("[DEBUG] ToSecureUITransportSender: err 7");
+          logger.error("openPopup", e);
+        });
+      });
     }
   };
 
