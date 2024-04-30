@@ -26,19 +26,56 @@ export function PreferenceBlockchainCustomRpcUrl({
   const requiresChainId = blockchainConfig.requiresChainId;
 
   const [rpcUrlError, setRpcUrlError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
   useEffect(() => {
-    if (!rpcUrl) {
-      setRpcUrlError(false);
-      return;
-    }
-    try {
-      new URL(rpcUrl.trim());
-      setRpcUrlError(false);
-    } catch (e: any) {
-      setRpcUrlError(true);
-    }
-  }, [rpcUrl]);
+    setIsButtonDisabled(isLoading || !rpcUrl || rpcUrlError);
+  }, [isLoading, rpcUrl, rpcUrlError]);
+
+  const verifySolanaRPC = (validUrl: string) => {
+    setIsLoading(true);
+    fetch(validUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        jsonrpc: "2.0",
+        id: 1,
+        method: "getHealth",
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.error) {
+          throw new Error(data.error.message);
+        }
+        setRpcUrlError(false);
+        setIsLoading(false);
+      })
+      .catch((_error) => {
+        setRpcUrlError(true);
+        setIsLoading(false);
+      });
+  };
+
+  useEffect(() => {
+    const debounceTimer = setTimeout(() => {
+      if (!rpcUrl) {
+        setRpcUrlError(false);
+        setIsLoading(false);
+        return;
+      }
+      try {
+        new URL(rpcUrl.trim());
+        !requiresChainId && verifySolanaRPC(rpcUrl.trim());
+      } catch (e: any) {
+        setRpcUrlError(true);
+        setIsLoading(false);
+      }
+    }, 500); // Debounce time: 500ms
+
+    return () => clearTimeout(debounceTimer);
+  }, [rpcUrl, requiresChainId]);
 
   return (
     <div style={{ paddingTop: "16px", height: "100%" }}>
@@ -81,8 +118,14 @@ export function PreferenceBlockchainCustomRpcUrl({
         </div>
         <div style={{ padding: 16 }}>
           <PrimaryButton
-            disabled={!rpcUrl || rpcUrlError}
-            label="Switch"
+            disabled={isButtonDisabled}
+            label={
+              isLoading
+                ? "Loading..."
+                : !rpcUrl || rpcUrlError
+                  ? "Invalid URL"
+                  : "Switch"
+            }
             type="submit"
           />
         </div>
