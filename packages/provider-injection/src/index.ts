@@ -158,63 +158,6 @@ function initEthereum(secureClientSender: TransportSender) {
   // If the cached provider changes, we want to change the cached proxy as well
   let cachedCurrentProvider: EIP1193Provider;
 
-  Object.defineProperty(window, "ethereum", {
-    get() {
-      if (!window.walletRouter)
-        throw new Error("Expected window.walletRouter to be set");
-
-      // Provider cache exists
-      if (
-        cachedWindowEthereumProxy &&
-        cachedCurrentProvider === window.walletRouter.currentProvider
-      ) {
-        return cachedWindowEthereumProxy;
-      }
-
-      cachedWindowEthereumProxy = new Proxy(
-        window.walletRouter.currentProvider,
-        {
-          get(target, prop, receiver) {
-            // Sites using web3-react force metamask usage by searching the
-            // providers array, so remove it for specific sites
-            // https://github.com/Uniswap/web3-react/blob/f5a54af645a4a2e125ee2f5ead6dd1ecd5d01dda/packages/metamask/src/index.ts#L56-L59
-            if (
-              window.walletRouter &&
-              !(prop in window.walletRouter.currentProvider) &&
-              prop in window.walletRouter
-            ) {
-              if (
-                window.location.href.endsWith(".app.uniswap.org") ||
-                window.location.href === "app.uniswap.org" ||
-                (
-                  (
-                    window.location.href === "kwenta.io" ||
-                    window.location.href.endsWith(".kwenta.io")
-                  )
-                  && prop === "providers"
-                )
-              ) {
-                return null;
-              }
-              return window.walletRouter[prop];
-            }
-
-            return Reflect.get(target, prop, receiver);
-          },
-        }
-      );
-
-      cachedCurrentProvider = window.walletRouter.currentProvider;
-
-      return cachedWindowEthereumProxy;
-    },
-
-    set(newProvider) {
-      window.walletRouter?.addProvider(newProvider);
-    },
-  });
-
-  // EIP-6963: https://eips.ethereum.org/EIPS/eip-6963
   const info = {
     uuid: uuidV4(),
     name: "Backpack",
@@ -229,8 +172,65 @@ function initEthereum(secureClientSender: TransportSender) {
       })
     );
   }
-  window.addEventListener("eip6963:requestProvider", announceProvider);
-  announceProvider();
+
+  try {
+    Object.defineProperty(window, "ethereum", {
+      get() {
+        if (!window.walletRouter)
+          throw new Error("Expected window.walletRouter to be set");
+
+        // Provider cache exists
+        if (
+          cachedWindowEthereumProxy &&
+          cachedCurrentProvider === window.walletRouter.currentProvider
+        ) {
+          return cachedWindowEthereumProxy;
+        }
+
+        cachedWindowEthereumProxy = new Proxy(
+          window.walletRouter.currentProvider,
+          {
+            get(target, prop, receiver) {
+              // Sites using web3-react force metamask usage by searching the
+              // providers array, so remove it for specific sites
+              // https://github.com/Uniswap/web3-react/blob/f5a54af645a4a2e125ee2f5ead6dd1ecd5d01dda/packages/metamask/src/index.ts#L56-L59
+              if (
+                window.walletRouter &&
+                !(prop in window.walletRouter.currentProvider) &&
+                prop in window.walletRouter
+              ) {
+                if (
+                  window.location.href.endsWith(".app.uniswap.org") ||
+                  window.location.href === "app.uniswap.org" ||
+                  ((window.location.href === "kwenta.io" ||
+                    window.location.href.endsWith(".kwenta.io")) &&
+                    prop === "providers")
+                ) {
+                  return null;
+                }
+                return window.walletRouter[prop];
+              }
+
+              return Reflect.get(target, prop, receiver);
+            },
+          }
+        );
+
+        cachedCurrentProvider = window.walletRouter.currentProvider;
+
+        return cachedWindowEthereumProxy;
+      },
+
+      set(newProvider) {
+        window.walletRouter?.addProvider(newProvider);
+      },
+    });
+
+    window.addEventListener("eip6963:requestProvider", announceProvider);
+    announceProvider();
+  } catch {
+    /* empty */
+  }
 }
 
 main();
