@@ -169,17 +169,15 @@ export class BackpackSolanaWallet {
     const commitment = request.commitment;
 
     if (!isVersionedTransaction(tx)) {
-      if (signers) {
-        signers.forEach((s: Signer) => {
-          tx.partialSign(s);
-        });
-      }
       if (!tx.feePayer) {
         tx.feePayer = publicKey;
       }
       if (!tx.recentBlockhash) {
         const { blockhash } = await connection.getLatestBlockhash(commitment);
         tx.recentBlockhash = blockhash;
+      }
+      if (signers) {
+        tx.partialSign(...signers);
       }
     } else {
       if (signers) {
