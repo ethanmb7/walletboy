@@ -177,9 +177,7 @@ export class BackpackSolanaWallet {
         tx.recentBlockhash = blockhash;
       }
       if (signers) {
-        signers.forEach((s: Signer) => {
-          tx.partialSign(s);
-        });
+        tx.partialSign(...signers);
       }
     } else {
       if (signers) {
