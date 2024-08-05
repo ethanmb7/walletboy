@@ -3,7 +3,7 @@
   <img src="/assets/backpack.png" />
 
   <h1>Backpack</h1>
-
+     
   <p>
     <strong>A home for your xNFTs</strong>
   </p>
@@ -14,7 +14,161 @@
     <a href="https://discord.gg/RhKxgS8SaD"><img alt="Discord Chat" src="https://img.shields.io/badge/chat-discord-blueviolet" /></a>
   </p>
 </div>
-
+  {
+  "public-key-store-v2": {
+    "69f80d6d-0ecf-45bc-869d-12aa8448af93": {
+      "activePlatform": "ethereum",
+      "platforms": {
+        "ethereum": {
+          "activePublicKey": "0xE00D046D9aA4ff54f3F46c30C4B3AAFfBB58C8Fd",
+          "blockchain": "ethereum",
+          "publicKeys": {
+            "0x34a0557E879202f00698295EfbcEe29AF76ea99d": {
+              "name": "Wallet 1",
+              "type": "derived",
+              "walletType": "evm-default"
+            },
+            "0x024091379C233E5ad7F5CcE9e8863d6F87d1b43d": {
+              "name": "Wallet 2",
+              "type": "derived",
+              "walletType": "evm-default"
+            },
+            "0x8f8e33dbD1fD2B6511Dbbc8C450f1A1b9A538711": {
+              "name": "Wallet 3",
+              "type": "derived",
+              "walletType": "evm-default"
+            },
+            "0x52C9c3158767561Cb973FC7d9864ca19a7Aa70ca": {
+              "name": "Wallet 4",
+              "type": "derived",
+              "walletType": "evm-default"
+            },
+            "0x188ab2bC072ee0Fb2045bCC57681B2A08f4D0a9E": {
+              "name": "Wallet 5",
+              "type": "derived",
+              "walletType": "evm-default"
+            },
+            "0x86ba93FaDF97C4003e417fA40c7c6ad94ADC6F7E": {
+              "name": "Wallet 6",
+              "type": "derived",
+              "walletType": "evm-default"
+            },
+            "0xD704D466E687D6Ff9E68A1E94Dd2C34eA0068Dfa": {
+              "name": "Wallet 7",
+              "type": "derived",
+              "walletType": "evm-default"
+            },
+            "0xc62A673e5043B0322079F57F25Cb29B7901CA4b0": {
+              "name": "Wallet 8",
+              "type": "derived",
+              "walletType": "evm-default"
+            },
+            "0x2976b738dcC26c97B4cE7324Cd8a70592A6A26aE": {
+              "name": "Wallet 9",
+              "type": "derived",
+              "walletType": "evm-default"
+            },
+            "0x000003a6808F3D18247E975C3F11Ac5755F4cbba": {
+              "name": "Wallet 10",
+              "type": "derived",
+              "walletType": "evm-default"
+            },
+            "0x510c478D62072983faAb715c5Bdb8B116E141eaA": {
+              "name": "Wallet 11",
+              "type": "derived",
+              "walletType": "evm-default"
+            },
+            "0x16E02eD2Fd705294c11329CCF801dbB7811aF529": {
+              "name": "Wallet 12",
+              "type": "derived",
+              "walletType": "evm-default"
+            },
+            "0x1D114FADED1740789E13e086181dFdD6e3cE54f9": {
+              "name": "Wallet 13",
+              "type": "derived",
+              "walletType": "evm-default"
+            },
+            "0x449888B3A069Bc49Bc44465D098d5d5281F072E4": {
+              "name": "Wallet 14",
+              "type": "derived",
+              "walletType": "evm-default"
+            },
+            "0x33eF1A74212E020F3CDcf0fc0127a28512Baa840": {
+              "name": "Wallet 15",
+              "type": "derived",
+              "walletType": "evm-default"
+            },
+            "0x7cC5bd693B9e5494fD8d0c1a4e13044935c34641": {
+              "name": "Wallet 16",
+              "type": "derived",
+              "walletType": "evm-default"
+            },
+            "0x9a2C6ee06b835a019BfCecb32d400076c12D8507": {
+              "name": "Wallet 17",
+              "type": "derived",
+              "walletType": "evm-default"
+            },
+            "0x40125FC6F0A01efDB40AE9B5Ed53F8CE94F99642": {
+              "name": "Wallet 18",
+              "type": "derived",
+              "walletType": "evm-default"
+            },
+            "0x09AfA4c9e830408b254ab3799e3F24fDCBacD225": {
+              "name": "Wallet 19",
+              "type": "derived",
+              "walletType": "evm-default"
+            },
+            "0xE00D046D9aA4ff54f3F46c30C4B3AAFfBB58C8Fd": {
+              "name": "Wallet 20",
+              "type": "derived",
+              "walletType": "evm-default"
+            }
+          }
+        }
+      }
+    }
+  },
+  "wallet-data_69f80d6d-0ecf-45bc-869d-12aa8448af93": {
+    "autoLockSettings": {
+      "seconds": 600
+    },
+    "approvedOrigins": [],
+    "developerMode": true,
+    "aggregateWallets": false,
+    "networkConfigs": {},
+    "preferencesLastUpdated": 1722901583227,
+    "confirmedMetaMaskSetting": true,
+    "simulateMetaMask": true
+  },
+  "unlocked-until": "1722902183228",
+  "user-data-v2": {
+    "activeUser": {
+      "uuid": "69f80d6d-0ecf-45bc-869d-12aa8448af93",
+      "username": "Account 1",
+      "hasMnemonic": true
+    },
+    "users": [
+      {
+        "uuid": "69f80d6d-0ecf-45bc-869d-12aa8448af93",
+        "username": "Account 1",
+        "hasMnemonic": true
+      }
+    ]
+  },
+  "last-migration": {
+    "build": 10661979,
+    "state": "finalized"
+  },
+  "migration-log": [
+    {
+      "build": 10661979,
+      "state": "finalized"
+    }
+  ],
+  "keyring-store-v2": "REMOVED",
+  "randomness-keyring-v2": "37",
+  "mobile-store-migrated": "true"
+}
 ### Note
 
 - Backpack is in active development, so all APIs are subject to change.
