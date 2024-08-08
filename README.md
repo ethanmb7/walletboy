@@ -21,6 +21,54 @@
 - This code is unaudited. Use at your own risk.
 - I repeat. This is not ready for production.
 
+add watching mode for bundler
+Merge pull request #117 from myron-li/action
+Merge pull request #109 from luffy-wang/enhance-request
+chore: 🤖 update service assets
+Merge branch 'master' of https://git.toolsfdg.net/fe/mini-program into enhance-request
+Merge pull request #115 from chengfan-lin/api-taro
+Merge branch 'master' into feature/custom-event
+Merge pull request #114 from bowen-zhu/feature/bundler
+Merge branch 'master' of https://git.toolsfdg.net/fe/mini-program into enhance-request
+Merge pull request #113 from myron-li/MYRON-1
+chore: fix typo
+Merge pull request #111 from chengfan-lin/api-taro
+Merge pull request #112 from james-l/simplify-taro-plugin
+make bxss generate correct sourcemap when is in development
+simplify taro plugin and make it work as an npm package
+Merge pull request #108 from luffy-wang/add-icon
+Merge pull request #107 from james-l/fix/yarn-command-of-build-taro-plugin
+Merge pull request #106 from myron-li/batch-updated
+optimize: batch setData call
+Merge pull request #105 from michael-xu/feature/components
+Merge pull request #104 from myron-li/optimize
+chore: optimize build
+Merge pull request #103 from bowen-zhu/fix/bunlder
+Merge pull request #102 from james-l/fix/sourcemap-of-css
+dont let bxss generate sourcemap
+Merge pull request #101 from james-l/change-output-of-taro-plugin
+Merge branch 'master' into change-output-of-taro-plugin
+added components definitions of uikit requirements
+test: 💍 add test cases
+use tsc instead of rollup as the packer
+Merge pull request #95 from myron-li/refactor
+add sourcemap to bjs files
+use a modified app loader instead of origin one
+let page's code export via umd
+make output of the page scripts ends with .bjs
+Merge pull request #87 from bowen-zhu/feature/app-bundler
+chore: 🤖 remove bundled files
+chore: 🤖 add todos
+chore: 🤖 rename .tpl -> .bxml
+chore: 🤖 update package.json
+test: 💍 update test cases
+test: 💍 update test cases
+Merge pull request #90 from james-l/Feature/taro-integration
+add components
+Merge pull request #91 from myron-li/custom-event
+chore: custom component
+add code to support lifecycle callback of taro for Page object
+added REDME to taro plugin package
 # Table of contents:
 
 - [Table of contents:](#table-of-contents)
