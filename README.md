@@ -1,6 +1,6 @@
 <div align="center">
 
-  <img src="/assets/backpack.png" />
+  <img src="/assets/backpack.png" alt="Backpack Logo" />
 
   <h1>Backpack</h1>
 
@@ -15,113 +15,124 @@
   </p>
 </div>
 
-### Note
+## Important Note
 
 - Backpack is in active development, so all APIs are subject to change.
 - This code is unaudited. Use at your own risk.
-- I repeat. This is not ready for production.
+- We emphasize: This is not ready for production use.
 
-# Table of contents:
+## Table of Contents
 
-- [Table of contents:](#table-of-contents)
-  - [Installing the Latest Release](#installing-the-latest-release)
-  - [Developing Locally](#developing-locally)
-    - [Pull the code](#pull-the-code)
-    - [Temporary preliminary steps](#temporary-preliminary-steps)
-      - [Enable self-signed local SSL certs](#enable-self-signed-local-ssl-certs)
-      - [Environment variables](#environment-variables)
-    - [Install dependencies](#install-dependencies)
-    - [Build all packages for production](#build-all-packages-for-production)
-    - [Start everything inside `./packages` for development](#start-everything-inside-packages-for-development)
-      - [Troubleshooting](#troubleshooting)
-    - [Install the development version of the extension](#install-the-development-version-of-the-extension)
-      - [Not seeing the dev folder?](#not-seeing-the-dev-folder)
-    - [Optionally install the built extension](#optionally-install-the-built-extension)
-  - [License](#license)
+- [Important Note](#important-note)
+- [Table of Contents](#table-of-contents)
+- [Installing the Latest Release](#installing-the-latest-release)
+- [Developing Locally](#developing-locally)
+  - [Prerequisites](#prerequisites)
+  - [Getting Started](#getting-started)
+  - [Build and Run](#build-and-run)
+  - [Troubleshooting](#troubleshooting)
+  - [Installing the Extension](#installing-the-extension)
+- [License](#license)
 
 ## Installing the Latest Release
 
-If you'd like to install the latest dev release, grab the latest **build.zip** [here](https://github.com/coral-xyz/backpack/releases)
-and add it to your local chrome profile, using developer mode. See the video below.
+To install the latest development release:
+
+1. Download the latest **build.zip** from our [Releases page](https://github.com/coral-xyz/backpack/releases).
+2. In Chrome, go to `chrome://extensions/` and enable "Developer mode" (top right).
+3. Drag and drop the downloaded zip file into the Chrome extensions page.
+
+For a visual guide, please refer to [this video](https://user-images.githubusercontent.com/101902546/173857300-fc139113-0af5-46fc-baad-236a2ebf63f1.m4p).
 
 ## Developing Locally
 
-https://user-images.githubusercontent.com/101902546/173857300-fc139113-0af5-46fc-baad-236a2ebf63f1.m4p
+### Prerequisites
 
-### Pull the code
+- Git
+- Node.js
+- Yarn package manager
+- Google Chrome browser
 
+### Getting Started
+
+1. Clone the repository:
+   ```bash
+   git clone git@github.com:coral-xyz/backpack.git
+   cd backpack
+   ```
+
+2. Enable self-signed local SSL certificates:
+   - Navigate to `chrome://flags/#allow-insecure-localhost` in Chrome.
+   - Enable the toggle and restart Chrome.
+   > **Warning**: Only enable this for development. Disable it when you're done to avoid security vulnerabilities.
+
+3. Set up environment variables:
+   - Rename `.env.example` to `.env` and configure as needed.
+
+4. Install dependencies:
+   ```bash
+   yarn install
+   ```
+
+### Build and Run
+
+1. Build all packages:
+   ```bash
+   yarn build
+   ```
+
+2. Start the development server:
+   ```bash
+   yarn start
+   ```
+
+   > Note: For a fresh repository, always run `yarn build` before `yarn start`.
+
+### Troubleshooting
+
+If you encounter build issues:
 ```bash
-git clone git@github.com:coral-xyz/backpack.git
-cd backpack
-```
-
-### Temporary preliminary steps
-
-#### Enable self-signed local SSL certs
-
-Go to chrome://flags/#allow-insecure-localhost and enable the toggle, then restart chrome. Note: Please don't enable this if you don't know what you're doing. It will leave you vulnerable to exploits if left on. It is recommended to undo this step when you are done developing.
-
-#### Environment variables
-
-### Install dependencies
-
-```bash
-yarn install
-```
-
-You can also optionally rename `.env.example` to `.env` and set your own variables.
-
-### Build all packages for production
-
-```bash
+yarn clean
 yarn build
-```
-
-### Start everything inside `./packages` for development
-
-```bash
 yarn start
 ```
 
-Note: In a fresh repo, you should run `yarn build` before `yarn start`.
+For WebSocket connection errors (`wss://localhost:9997/ws failed`):
 
-#### Troubleshooting
+1. Install mkcert:
+   ```bash
+   cd packages/app-extension
+   brew install mkcert
+   ```
 
-_If you run into issues with builds try running `yarn clean` and then start again._
+2. Generate and install certificates:
+   ```bash
+   mkcert localhost
+   mkcert -install
+   ```
 
-<details>
-  <summary>Seeing `WebSocket connection to 'wss://localhost:9997/ws' failed` error messages in your console?</summary>
+Restart the development server after these steps.
 
-You need to install a SSL certificate for localhost as the one provided by [webpack-dev-server is considered invalid](https://github.com/webpack/webpack-dev-server/issues/2957). This step is optional as `react-refresh` will still function without it, but it's a good idea to try and fix this error because otherwise your browser will be making a lot of failed requests and `webpack-dev-server` might not be functioning to its full capabilities.
+### Installing the Extension
 
-A relatively simple way of doing this is using [mkcert](https://github.com/FiloSottile/mkcert)
+#### Development Version (with live-reloading)
 
-Instructions for how to install a trusted self-signed cert on macOS -
+1. Go to `chrome://extensions/`
+2. Enable "Developer mode" (top right)
+3. Click "Load unpacked" and select the `packages/app-extension/dev` directory
 
-```
-cd packages/app-extension
-brew install mkcert
-mkcert localhost
-mkcert -install
-```
+If the `dev` folder is missing:
+- Ensure all Node processes are terminated: `killall -9 node`
+- Try running `yarn start` in both the root directory and `packages/app-extension`
 
-Now the next time you run `yarn start` the errors should no longer appear.
+#### Production Build
 
-</details>
+To test the production build:
+1. Run `yarn build`
+2. In `chrome://extensions/`, load the `packages/app-extension/build` directory
 
-### Install the development version of the extension
-
-Go to chrome://extensions, enable developer mode (top right) and drag the `packages/app-extension/dev` dir into the window. This version will have (Dev) in the title and supports live-reloading.
-
-#### Not seeing the dev folder?
-
-- Do you have a stale node process running? Try to kill it all: `killall -9 node` and start over
-- Try running `yarn start` from within `packages/app-extension` while running `yarn start` from root. This should work.
-
-### Optionally install the built extension
-
-If you want to try the production build of the extension, run `yarn build` and drag the `packages/app-extension/build` dir into chrome://extensions as above. This version won't have hot-reloading and local plugins won't be visible unless you also run `yarn start`
+Note: This version won't have hot-reloading, and local plugins may not be visible unless you also run `yarn start`.
 
 ## License
 
-Unless you explicitly state otherwise, any contribution intentionally submitted for inclusion by you shall be licensed at the discretion of the repository maintainers without any additional terms or conditions.
+By contributing to this project, you agree that your contributions will be licensed under the terms decided by the repository maintainers, unless explicitly stated otherwise.
