@@ -1,0 +1,39 @@
+Current runner version: '2.319.1'
+Operating System
+Runner Image
+Runner Image Provisioner
+GITHUB_TOKEN Permissions
+Secret source: Actions
+Prepare workflow directory
+Prepare all required actions
+Getting action download info
+Download action repository 'actions/checkout@v4' (SHA:692973e3d937129bcbf40652eb9f2f61becf3332)
+Download action repository 'actions/setup-node@v4' (SHA:1e60f620b9541d16bece96c5465dc8ee9832be0b)
+Complete job name: Test - Linux - 22.x
+Run git config --global user.email "npm-cli+bot@github.com"
+Run actions/setup-node@v4
+Attempting to download 22.x...
+Acquiring 22.7.0 - x64 from https://github.com/actions/node-versions/releases/download/22.7.0-10511334152/node-22.7.0-linux-x64.tar.gz
+Extracting ...
+/usr/bin/tar xz --strip 1 --warning=no-unknown-keyword --overwrite -C /home/runner/work/_temp/4a291ee7-e8a8-4e81-b041-be6d04705fd0 -f /home/runner/work/_temp/0e6ec4d3-9e95-40a8-ad25-3a8663075d78
+Adding to the cache ...
+Environment details
+/opt/hostedtoolcache/node/22.7.0/x64/bin/npm config get cache
+/home/runner/.npm
+Cache Size: ~147 MB (154035910 B)
+/usr/bin/tar -xf /home/runner/work/_temp/7c35cd44-0721-45cc-8818-721d6ca5631b/cache.tzst -P -C /home/runner/work/documentation/documentation --use-compress-program unzstd
+Received 154035910 of 154035910 (100.0%), 146.8 MBs/sec
+Cache restored successfully
+Cache restored from key: node-cache-Linux-npm-e30e4d71b0ffddf5bf7f971772ceefa54d9956033f5947833cd0c25511d2bef4
+3 saniye
+Prepare all required actions
+Run ./.github/actions/install-latest-npm
+Run MATCH=""
+node@v22.7.0
+Checking if node@v22.7.0 satisfies npm@latest (^18.17.0 || >=20.5.0)
+Found compatible version: npm@latest
+
+changed 13 packages in 2s
+Run npm -v
+10.8.2
+
