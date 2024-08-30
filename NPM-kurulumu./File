@@ -1,0 +1,6 @@
+kayıt=https://pkgs.dev.azure.com/recep021682KXdKDRS/_packaging/recep021682KXdKDRS/npm/registry/
+                        
+her zaman-auth=true
+./vsts-npm-auth -config .npmrc
+`npm kurulumu`
+`npm yayınla`
