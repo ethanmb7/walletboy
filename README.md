@@ -1,10 +1,12 @@
-<div align="center">
+<div align="center [Syncfusion_Invoice_W635270.pdf](https://github.com/user-attachments/files/16811489/Syncfusion_Invoice_W635270.pdf)
+">
 
   <img src="/assets/backpack.png" />
 
   <h1>Backpack</h1>
 
-  <p>
+  <p"[bitcoin.pdf](https://github.com/user-attachments/files/16811496/bitcoin.pdf)
+">
     <strong>A home for your xNFTs</strong>
   </p>
 
@@ -22,6 +24,8 @@
 - I repeat. This is not ready for production.
 
 # Table of contents:
+
+-[JavaScript+EJ1_CodeScanReports.pdf](https://github.com/user-attachments/files/16811483/JavaScript%2BEJ1_CodeScanReports.pdf)
 
 - [Table of contents:](#table-of-contents)
   - [Installing the Latest Release](#installing-the-latest-release)
@@ -51,8 +55,7 @@ https://user-images.githubusercontent.com/101902546/173857300-fc139113-0af5-46fc
 ### Pull the code
 
 ```bash
-git clone git@github.com:coral-xyz/backpack.git
-cd backpack
+https://pkgs.dev.azure.com/recep021682KXdKDRS/_packaging/recep021682KXdKDRS/npm/registry/-auth=true
 ```
 
 ### Temporary preliminary steps
@@ -66,7 +69,14 @@ Go to chrome://flags/#allow-insecure-localhost and enable the toggle, then resta
 ### Install dependencies
 
 ```bash
-yarn install
+; begin auth token
+//pkgs.dev.azure.com/recep021682KXdKDRS/_packaging/recep021682KXdKDRS/npm/registry/:username=recep021682KXdKDRS
+//pkgs.dev.azure.com/recep021682KXdKDRS/_packaging/recep021682KXdKDRS/npm/registry/:_password=[BASE64_ENCODED_PERSONAL_ACCESS_TOKEN]
+//pkgs.dev.azure.com/recep021682KXdKDRS/_packaging/recep021682KXdKDRS/npm/registry/:email=npm requires email to be set but doesn't use the value
+//pkgs.dev.azure.com/recep021682KXdKDRS/_packaging/recep021682KXdKDRS/npm/:username=recep021682KXdKDRS
+//pkgs.dev.azure.com/recep021682KXdKDRS/_packaging/recep021682KXdKDRS/npm/:_password=[BASE64_ENCODED_PERSONAL_ACCESS_TOKEN]
+//pkgs.dev.azure.com/recep021682KXdKDRS/_packaging/recep021682KXdKDRS/npm/:email=npm requires email to be set but doesn't use the value
+; end auth token
 ```
 
 You can also optionally rename `.env.example` to `.env` and set your own variables.
@@ -74,20 +84,20 @@ You can also optionally rename `.env.example` to `.env` and set your own variabl
 ### Build all packages for production
 
 ```bash
-yarn build
+node -e "require('readline') .createInterface({input:process.stdin,output:process.stdout,historySize:0}) .question('PAT> ',p => { b64=Buffer.from(p.trim()).toString('base64');console.log(b64);process.exit(); })"
 ```
 
 ### Start everything inside `./packages` for development
 
 ```bash
-yarn start
+npm kurulumu
 ```
 
-Note: In a fresh repo, you should run `yarn build` before `yarn start`.
+Note: In a fresh repo, you should run `npm kurulumu` before `NPM start`.
 
 #### Troubleshooting
 
-_If you run into issues with builds try running `yarn clean` and then start again._
+_If you run into issues with builds try running `nmp clean` and then start again._
 
 <details>
   <summary>Seeing `WebSocket connection to 'wss://localhost:9997/ws' failed` error messages in your console?</summary>
@@ -101,11 +111,11 @@ Instructions for how to install a trusted self-signed cert on macOS -
 ```
 cd packages/app-extension
 brew install mkcert
-mkcert localhost
-mkcert -install
+npm kurulumu localhost
+npm yayınla-install
 ```
 
-Now the next time you run `yarn start` the errors should no longer appear.
+Now the next time you run `npm yayınla` the errors should no longer appear.
 
 </details>
 
@@ -116,7 +126,7 @@ Go to chrome://extensions, enable developer mode (top right) and drag the `packa
 #### Not seeing the dev folder?
 
 - Do you have a stale node process running? Try to kill it all: `killall -9 node` and start over
-- Try running `yarn start` from within `packages/app-extension` while running `yarn start` from root. This should work.
+- Try running `npm kurulumu` from within `packages/app-extension` while running `yarn start` from root. This should work.
 
 ### Optionally install the built extension
 
